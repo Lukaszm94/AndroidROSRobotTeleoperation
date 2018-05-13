@@ -182,7 +182,14 @@ public class MainActivity extends /*AppCompat*/RosActivity implements SensorEven
         if(timerRunning) {
             stopTimer();
         }
+        //saveSettings();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.i(TAG, "onDestroy");
         saveSettings();
+        super.onDestroy();
     }
 
     @Override
@@ -262,20 +269,20 @@ public class MainActivity extends /*AppCompat*/RosActivity implements SensorEven
 
     private void saveSettings() {
         Log.i(TAG, "saveSettings");
-        /*SharedPreferences sharedPreferences = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putFloat(getString(R.string.maxLinearVelocity), (float)maxLinearVelocity);
         editor.putFloat(getString(R.string.maxAngularVelocity), (float)maxAngularVelocity);
-        editor.commit();*/
+        editor.commit();
     }
 
     private void loadSettings() {
         Log.i(TAG, "loadSettings");
-        /*SharedPreferences sharedPreferences = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = this.getPreferences(Context.MODE_PRIVATE);
         maxLinearVelocity = sharedPreferences.getFloat(getString(R.string.maxLinearVelocity), (float)DefaultValues.DEFAULT_MAX_LINEAR_VELOCITY);
         maxAngularVelocity = sharedPreferences.getFloat(getString(R.string.maxAngularVelocity), (float)DefaultValues.DEFAULT_MAX_ANGULAR_VELOCITY);
         settingsFragment.setMaxLinearVelocity(maxLinearVelocity);
-        settingsFragment.setMaxAngularVelocity(maxAngularVelocity);*/
+        settingsFragment.setMaxAngularVelocity(maxAngularVelocity);
     }
 
     private void stopTimer(){
