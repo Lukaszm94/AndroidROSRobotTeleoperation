@@ -329,7 +329,7 @@ public class MainActivity extends /*AppCompat*/RosActivity implements SensorEven
         } else {
             omega = (angle - 270.0) / 90.0 * strength;
         }
-        return omega;
+        return -omega;
     }
 
     private void updateSetpointLabels(double linearVelocitySetpoint, double angularVelocitySetpoint) {
@@ -375,7 +375,7 @@ public class MainActivity extends /*AppCompat*/RosActivity implements SensorEven
             angle = angle + minActiveAngle;
         }
         angle = clamp(angle, -maxRollAngle + minActiveAngle, maxRollAngle - minActiveAngle);
-        double omegaPercentage = angle / (maxRollAngle - minActiveAngle) * 100.0;
+        double omegaPercentage = -angle / (maxRollAngle - minActiveAngle) * 100.0;
         return omegaPercentage;
     }
 
